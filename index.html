@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="APoD – Explore NASA's Astronomy Picture of the Day. Discover breathtaking space images, save your favorites, and journey through the cosmos." />
+  <title>APoD — Astronomy Picture of the Day</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+  <!-- ===== CINEMATIC BACKGROUND ===== -->
+  <div id="bg-overlay" class="bg-overlay"></div>
+
+  <!-- ===== HEADER / NAV ===== -->
+  <header id="main-header" class="header">
+    <a href="#" class="logo" id="logo">
+      <span class="logo-icon">✦</span>
+      <span class="logo-text">APoD</span>
+    </a>
+    <nav class="nav" id="main-nav">
+      <a href="#hero" class="nav-link active" data-section="hero">Home</a>
+      <a href="#gallery-section" class="nav-link" data-section="gallery-section">Gallery</a>
+      <a href="#favorites-section" class="nav-link" data-section="favorites-section">Favorites</a>
+      <a href="#about-section" class="nav-link" data-section="about-section">About</a>
+    </nav>
+    <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section id="hero" class="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">APoD · Astronomy Picture of the Day</p>
+      <h1 class="hero-title">DISCOVER<br/>BEYOND<br/>SPACE</h1>
+      <p class="hero-subtitle">"Embark on a journey of exploration and discovery in the vast cosmos, where the universe holds endless possibilities."</p>
+      <div class="hero-actions">
+        <button id="btn-explore" class="btn btn-primary">
+          <span class="btn-icon"></span> Explore Today
+        </button>
+        <button id="btn-random" class="btn btn-secondary">
+          <span class="btn-icon"></span> Random Image
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TODAY'S APOD SECTION ===== -->
+  <section id="apod-section" class="section apod-section">
+    <div class="section-header">
+      <h2 class="section-title">Today's Picture</h2>
+      <div class="controls">
+        <div class="date-picker-wrap">
+          <label for="date-picker" class="date-label">Pick a date</label>
+          <input type="date" id="date-picker" class="date-picker" />
+        </div>
+        <button id="btn-random-2" class="btn btn-accent">
+          <span class="btn-icon"></span> Random
+        </button>
+      </div>
+    </div>
+
+    <!-- Loading State -->
+    <div id="loading-state" class="state-card loading-state" style="display:none;">
+      <div class="loader-ring"></div>
+      <p>Loading the cosmos…</p>
+    </div>
+
+    <!-- Error State -->
+    <div id="error-state" class="state-card error-state" style="display:none;">
+      <span class="error-icon"></span>
+      <p id="error-message">Something went wrong. Please try again.</p>
+      <button id="btn-retry" class="btn btn-primary">Retry</button>
+    </div>
+
+    <!-- APOD Card -->
+    <article id="apod-card" class="apod-card" style="display:none;">
+      <div class="apod-media-wrap">
+        <img id="apod-image" class="apod-image" src="" alt="" loading="lazy" />
+        <div id="apod-video-wrap" class="apod-video-wrap" style="display:none;">
+          <iframe id="apod-video" class="apod-video" src="" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="apod-media-overlay">
+          <button id="btn-hd" class="btn-icon-only" title="View HD">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="apod-info">
+        <div class="apod-meta">
+          <span id="apod-date" class="apod-date"></span>
+          <span id="apod-media-type" class="apod-badge"></span>
+        </div>
+        <h2 id="apod-title" class="apod-title"></h2>
+        <p id="apod-explanation" class="apod-explanation"></p>
+        <p id="apod-copyright" class="apod-copyright"></p>
+        <div class="apod-actions">
+          <button id="btn-save-fav" class="btn btn-glow">
+            <span class="heart-icon">♡</span> Save to Favorites
+          </button>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ===== MINI GALLERY — LAST 5 DAYS ===== -->
+  <section id="gallery-section" class="section gallery-section">
+    <div class="section-header">
+      <h2 class="section-title">Recent Gallery</h2>
+      <p class="section-sub">The last 5 days of cosmic wonder</p>
+    </div>
+    <div id="gallery-grid" class="gallery-grid">
+      <!-- Cards injected by JS -->
+    </div>
+    <div id="gallery-loading" class="state-card loading-state">
+      <div class="loader-ring"></div>
+      <p>Loading gallery…</p>
+    </div>
+  </section>
+
+  <!-- ===== FAVORITES SECTION ===== -->
+  <section id="favorites-section" class="section favorites-section">
+    <div class="section-header">
+      <h2 class="section-title">Your Favorites</h2>
+      <p class="section-sub">Saved cosmic moments</p>
+    </div>
+    <div id="favorites-empty" class="empty-state">
+      <span class="empty-icon"></span>
+      <p>No favorites yet. Start exploring and save the images you love!</p>
+    </div>
+    <div id="favorites-grid" class="gallery-grid">
+      <!-- Cards injected by JS -->
+    </div>
+  </section>
+
+  <!-- ===== ABOUT SECTION ===== -->
+  <section id="about-section" class="section about-section">
+    <div class="about-content">
+      <h2 class="section-title">About APoD</h2>
+      <p>APoD brings you NASA's Astronomy Picture of the Day — a curated daily image or video of our universe, each accompanied by a brief explanation written by a professional astronomer.</p>
+      <p>Since June 16, 1995, APOD has been one of the most popular websites on the internet, inspiring millions to look up and wonder.</p>
+      <div class="about-stats">
+        <div class="stat">
+          <span class="stat-number" id="stat-days">11,000+</span>
+          <span class="stat-label">Days of images</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">195+</span>
+          <span class="stat-label">Countries reached</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">∞</span>
+          <span class="stat-label">Cosmic wonder</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <p>Data from <a href="https://api.nasa.gov/" target="_blank" rel="noopener">NASA Open API</a></p>
+    <p class="footer-small">APoD — Astronomy Picture of the Day Explorer</p>
+  </footer>
+
+  <!-- ===== IMAGE LIGHTBOX ===== -->
+  <div id="lightbox" class="lightbox" style="display:none;">
+    <button id="lightbox-close" class="lightbox-close" aria-label="Close">✕</button>
+    <img id="lightbox-img" class="lightbox-img" src="" alt="" />
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
