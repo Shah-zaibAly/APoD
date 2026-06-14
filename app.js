@@ -167,7 +167,7 @@ function preloadImage(src) {
   });
 }
 
-// ── UI Rendering ───────────────────────────────────────────
+// UI Rendering 
 
 function showLoading() {
   dom.loadingState.style.display = 'flex';
