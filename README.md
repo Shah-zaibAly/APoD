@@ -52,10 +52,8 @@ Open `index.html` directly in your browser or use the VS Code Live Server extens
 To use your own NASA API key — get one free at [api.nasa.gov](https://api.nasa.gov/) and replace the key in `app.js`:
 
 ```js
-const NASA_API_KEY = 'your_api_key_here';
+const NASA_API_KEY = 'JLkccE9qnbx62FjjhLQcUAT5iEzsYoXNd5R4KlO1';
 ```
-
----
 
 ---
 
