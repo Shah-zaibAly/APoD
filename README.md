@@ -92,4 +92,4 @@ This project uses the [NASA APOD API](https://api.nasa.gov/) — free with regis
 
 **Shahzaib Ali**
 - GitHub: [Shah-zaibAly](https://github.com/Shah-zaibAly)
-- LinkedIn: [linkedin.com/in/yourprofile]([https://linkedin.com/in/yourprofile](https://www.linkedin.com/in/shahzaib-ali-659002374/))
+- LinkedIn: (https://www.linkedin.com/in/shahzaib-ali-659002374/)
